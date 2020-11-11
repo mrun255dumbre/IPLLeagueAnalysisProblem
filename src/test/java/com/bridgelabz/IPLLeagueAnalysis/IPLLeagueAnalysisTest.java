@@ -108,4 +108,11 @@ public class IPLLeagueAnalysisTest {
         BowlingAnalysisCSV[] bowlingAnalysisCSV = new Gson().fromJson(sortedIPLBowlingData, BowlingAnalysisCSV[].class);
         Assert.assertEquals("Ben Cutting",bowlingAnalysisCSV[bowlingAnalysisCSV.length-1].player);
     }
+
+    @Test
+    public void givenBowlingAnalysisData_WhenBestStrikeRateWith5wAnd4w_ShouldReturnResult () throws IOException{
+        sortedIPLBowlingData = iplLeagueAnalysis.getBestStrikingRateWith5wAnd4wBowlingData(BOWLING_CSV_FILE_PATH);
+        BowlingAnalysisCSV[] bowlingAnalysisCSV = new Gson().fromJson(sortedIPLBowlingData, BowlingAnalysisCSV[].class);
+        Assert.assertEquals("Lasith Malinga",bowlingAnalysisCSV[bowlingAnalysisCSV.length-1].player);
+    }
 }

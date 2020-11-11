@@ -99,4 +99,10 @@ public class IPLLeagueAnalysis {
         Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(bowlingAnalysisCSV -> bowlingAnalysisCSV.economyRate);
         return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
     }
+
+    public String getBestStrikingRateWith5wAnd4wBowlingData(String filePath) throws IOException {
+        loadBowlingAnalysis(filePath);
+        Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(BowlingAnalysisCSV::getWicketInInnings).thenComparing(BowlingAnalysisCSV::getStrikeRate);
+        return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
+    }
 }

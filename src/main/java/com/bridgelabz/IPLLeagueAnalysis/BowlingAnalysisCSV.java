@@ -40,6 +40,14 @@ public class BowlingAnalysisCSV {
     @CsvBindByName(column = "5w", required = true)
     public int fiveWicketsInInnings;
 
+    public int getWicketInInnings(){
+        return fourWicketsInInnings + fiveWicketsInInnings;
+    }
+
+    public double getStrikeRate() {
+        return strikeRate;
+    }
+
     @Override
     public String toString() {
         return "BowlingAnalysisCSV{" +
