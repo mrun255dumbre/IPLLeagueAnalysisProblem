@@ -94,4 +94,11 @@ public class IPLLeagueAnalysisTest {
         BowlingAnalysisCSV[] bowlingAnalysisCSV = new Gson().fromJson(sortedIPLBowlingData, BowlingAnalysisCSV[].class);
         Assert.assertEquals("Krishnappa Gowtham",bowlingAnalysisCSV[98].player);
     }
+
+    @Test
+    public void givenBowlingAnalysisData_WhenTopStrikingRate_ShouldReturnResult () throws IOException{
+        sortedIPLBowlingData = iplLeagueAnalysis.getTopStrikingRateBowlingData(BOWLING_CSV_FILE_PATH);
+        BowlingAnalysisCSV[] bowlingAnalysisCSV = new Gson().fromJson(sortedIPLBowlingData, BowlingAnalysisCSV[].class);
+        Assert.assertEquals(120,bowlingAnalysisCSV[bowlingAnalysisCSV.length-1].strikeRate,0.0);
+    }
 }

@@ -32,7 +32,7 @@ public class BowlingAnalysisCSV {
     public double economyRate;
 
     @CsvBindByName(column = "SR", required = true)
-    public String strikeRate;
+    public double strikeRate;
 
     @CsvBindByName(column = "4w", required = true)
     public int fourWicketsInInnings;
