@@ -81,4 +81,10 @@ public class IPLLeagueAnalysis {
         Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(BattingAnalysisCSV::getAverage).thenComparing(BattingAnalysisCSV::getRuns);
         return sort.returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
     }
+
+    public String getTopBowlingAverageBowlingData(String filePath) throws IOException {
+        loadBowlingAnalysis(filePath);
+        Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(bowlingAnalysisCSV -> bowlingAnalysisCSV.average );
+        return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
+    }
 }

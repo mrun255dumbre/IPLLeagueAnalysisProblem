@@ -13,6 +13,7 @@ public class IPLLeagueAnalysisTest {
     private static final String BATTING_CSV_FILE_PATH = "C:\\Users\\Pranav\\IdeaProjects\\IPLLeagueAnalysisProblem\\batting.csv";
     private static final String BOWLING_CSV_FILE_PATH = "C:\\Users\\Pranav\\IdeaProjects\\IPLLeagueAnalysisProblem\\bowling.csv";
     String sortedIPLBattingData;
+    String sortedIPLBowlingData;
 
     @Before
     public void setUp() throws Exception {
@@ -85,5 +86,12 @@ public class IPLLeagueAnalysisTest {
         sortedIPLBattingData = iplLeagueAnalysis.getMaximumRunWithBestAverageBattingData(BATTING_CSV_FILE_PATH);
         BattingAnalysisCSV[] battingAnalysisCSV = new Gson().fromJson(sortedIPLBattingData, BattingAnalysisCSV[].class);
         Assert.assertEquals("MS Dhoni",battingAnalysisCSV[100].player);
+    }
+
+    @Test
+    public void givenBowlingAnalysisData_WhenTopBowlingAverage_ShouldReturnResult () throws IOException{
+        sortedIPLBowlingData = iplLeagueAnalysis.getTopBowlingAverageBowlingData(BOWLING_CSV_FILE_PATH);
+        BowlingAnalysisCSV[] bowlingAnalysisCSV = new Gson().fromJson(sortedIPLBowlingData, BowlingAnalysisCSV[].class);
+        Assert.assertEquals("Krishnappa Gowtham",bowlingAnalysisCSV[98].player);
     }
 }
