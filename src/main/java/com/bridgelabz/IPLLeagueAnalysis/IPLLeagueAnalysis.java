@@ -70,6 +70,12 @@ public class IPLLeagueAnalysis {
         return returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
     }
 
+    public String getGreatAverageWithBestStrikeRateBattingData(String filePath) throws IOException {
+        loadBattingAnalysis(filePath);
+        Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(BattingAnalysisCSV::getStrikeRate).thenComparing(BattingAnalysisCSV::getAverage);
+        return returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
+    }
+
     public <E> String returnJsonFile(List<E> iplList,Comparator<E> comparator ){
         this.sort.sort(iplList,comparator);
         String sortedIPLData=new Gson().toJson(iplList);

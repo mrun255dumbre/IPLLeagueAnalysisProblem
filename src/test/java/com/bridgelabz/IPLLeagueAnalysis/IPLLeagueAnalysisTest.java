@@ -72,4 +72,11 @@ public class IPLLeagueAnalysisTest {
         BattingAnalysisCSV[] battingAnalysisCSV = new Gson().fromJson(sortedIPLBattingData, BattingAnalysisCSV[].class);
         Assert.assertEquals("Andre Russell",battingAnalysisCSV[100].player);
     }
+
+    @Test
+    public void givenBattingAnalysisData_WhenGreatAverageWithBestStrikeRate_ShouldReturnResult () throws IOException{
+        sortedIPLBattingData = iplLeagueAnalysis.getGreatAverageWithBestStrikeRateBattingData(BATTING_CSV_FILE_PATH);
+        BattingAnalysisCSV[] battingAnalysisCSV = new Gson().fromJson(sortedIPLBattingData, BattingAnalysisCSV[].class);
+        Assert.assertEquals("Ishant Sharma",battingAnalysisCSV[100].player);
+    }
 }
