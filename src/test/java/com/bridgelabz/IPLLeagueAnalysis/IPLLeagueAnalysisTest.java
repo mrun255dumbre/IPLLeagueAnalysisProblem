@@ -6,6 +6,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.List;
 
 public class IPLLeagueAnalysisTest {
     IPLLeagueAnalysis iplLeagueAnalysis;
@@ -52,5 +53,16 @@ public class IPLLeagueAnalysisTest {
         } catch (IOException ioException) {
             ioException.printStackTrace();
         }
+    }
+
+    @Test
+    public void givenBattingAnalysisData_WhenMax6sAnd4s_ShouldReturnResult () throws IOException{
+        List sortedIPLBattingData = iplLeagueAnalysis.getMaximumSixesAndFoursBattingData(BATTING_CSV_FILE_PATH);
+        String sixes = (String) sortedIPLBattingData.get(0);
+        String fours = (String) sortedIPLBattingData.get(1);
+        BattingAnalysisCSV[] battingAnalysis = new Gson().fromJson(sixes, BattingAnalysisCSV[].class);
+        BattingAnalysisCSV[] battingAnalysisCSV = new Gson().fromJson(fours, BattingAnalysisCSV[].class);
+        Assert.assertEquals("Andre Russell",battingAnalysis[battingAnalysis.length-1].player);
+        Assert.assertEquals("Shikhar Dhawan",battingAnalysisCSV[battingAnalysisCSV.length-1].player);
     }
 }

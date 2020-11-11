@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2020-11-11T03:33:56" hostname="DESKTOP-9I4U5L1" time="1.141">
+<testsuite name="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-11T04:57:58" hostname="DESKTOP-9I4U5L1" time="0.718">
   <properties/>
-  <testcase name="givenBattingAnalysisCsvFile_ShouldReturnCorrectRecords" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.515"/>
-  <testcase name="givenBowlingAnalysisCsvFile_ShouldReturnCorrectRecords" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.146"/>
-  <testcase name="givenBattingAnalysisData_ShouldSortedOnAverage" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.291"/>
-  <testcase name="givenBattingAnalysisData_ShouldSortedOnStrikeRate" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.184"/>
+  <testcase name="givenBattingAnalysisData_WhenMax6sAnd4s_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.718"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

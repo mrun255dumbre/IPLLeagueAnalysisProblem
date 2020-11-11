@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -50,6 +51,16 @@ public class IPLLeagueAnalysis {
         loadBattingAnalysis(filePath);
         Comparator<BattingAnalysisCSV> battingAnalysisComparator = Comparator.comparing(battingAnalysisCSV -> battingAnalysisCSV.strikeRate);
         return this.returnJsonFile(battingAnalysisCSVList,battingAnalysisComparator);
+    }
+
+    public List<String> getMaximumSixesAndFoursBattingData(String filePath) throws IOException {
+        List<String> maxSixesAndFours = new ArrayList<>();
+        loadBattingAnalysis(filePath);
+        Comparator<BattingAnalysisCSV> battingAnalysisComparator = Comparator.comparing(battingAnalysis -> battingAnalysis.sixes);
+        Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(battingAnalysis -> battingAnalysis.fours);
+        maxSixesAndFours.add(returnJsonFile(battingAnalysisCSVList, battingAnalysisComparator));
+        maxSixesAndFours.add(returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator));
+        return maxSixesAndFours;
     }
 
     public <E> String returnJsonFile(List<E> iplList,Comparator<E> comparator ){
