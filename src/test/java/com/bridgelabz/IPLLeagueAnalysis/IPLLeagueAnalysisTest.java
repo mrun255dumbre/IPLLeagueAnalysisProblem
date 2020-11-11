@@ -41,4 +41,16 @@ public class IPLLeagueAnalysisTest {
             ioException.printStackTrace();
         }
     }
+
+    @Test
+    public void givenBattingAnalysisData_ShouldSortedOnStrikeRate() {
+        try {
+            sortedIPLBattingData = iplLeagueAnalysis.getHighestStrikeRate(BATTING_CSV_FILE_PATH);
+            BattingAnalysisCSV[] battingAnalysisCSV = new Gson().fromJson(sortedIPLBattingData, BattingAnalysisCSV[].class);
+            Assert.assertEquals("Ishant Sharma",battingAnalysisCSV[100].player);
+            Assert.assertEquals("Andre Russell",battingAnalysisCSV[99].player);
+        } catch (IOException ioException) {
+            ioException.printStackTrace();
+        }
+    }
 }

@@ -43,8 +43,18 @@ public class IPLLeagueAnalysis {
     public String getAverageWiseSortedIPLBattingData(String filePath) throws IOException {
         loadBattingAnalysis(filePath);
         Comparator<BattingAnalysisCSV> battingAnalysisComparatorComparator = Comparator.comparing(battingAnalysis -> battingAnalysis.average);
-        this.sort.sort(battingAnalysisCSVList,battingAnalysisComparatorComparator);
-        String sortedBattingAnalysisAsJSON = new Gson().toJson(battingAnalysisCSVList);
-        return sortedBattingAnalysisAsJSON;
+        return this.returnJsonFile(battingAnalysisCSVList,battingAnalysisComparatorComparator);
+    }
+
+    public String getHighestStrikeRate(String filePath) throws IOException {
+        loadBattingAnalysis(filePath);
+        Comparator<BattingAnalysisCSV> battingAnalysisComparator = Comparator.comparing(battingAnalysisCSV -> battingAnalysisCSV.strikeRate);
+        return this.returnJsonFile(battingAnalysisCSVList,battingAnalysisComparator);
+    }
+
+    public <E> String returnJsonFile(List<E> iplList,Comparator<E> comparator ){
+        this.sort.sort(iplList,comparator);
+        String sortedIPLData=new Gson().toJson(iplList);
+        return sortedIPLData;
     }
 }
