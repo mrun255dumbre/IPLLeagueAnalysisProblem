@@ -14,6 +14,7 @@ import java.util.List;
 public class IPLLeagueAnalysis {
     List<BattingAnalysisCSV> battingAnalysisCSVList;
     List<BowlingAnalysisCSV> bowlingAnalysisCSVList;
+    Sort sort = new Sort();
 
     public int loadBattingAnalysis(String csvFilePath) throws IOException {
         try {
@@ -37,5 +38,13 @@ public class IPLLeagueAnalysis {
             csvBuilderException.getMessage();
         }
         return battingAnalysisCSVList.size();
+    }
+
+    public String getAverageWiseSortedIPLBattingData(String filePath) throws IOException {
+        loadBattingAnalysis(filePath);
+        Comparator<BattingAnalysisCSV> battingAnalysisComparatorComparator = Comparator.comparing(battingAnalysis -> battingAnalysis.average);
+        this.sort.sort(battingAnalysisCSVList,battingAnalysisComparatorComparator);
+        String sortedBattingAnalysisAsJSON = new Gson().toJson(battingAnalysisCSVList);
+        return sortedBattingAnalysisAsJSON;
     }
 }
