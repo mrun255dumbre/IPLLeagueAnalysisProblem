@@ -66,6 +66,10 @@ public class BattingAnalysisCSV {
         return average;
     }
 
+    public int getRuns() {
+        return runs;
+    }
+
     @Override
     public String toString() {
         return "BattingAnalysisCSV{" +

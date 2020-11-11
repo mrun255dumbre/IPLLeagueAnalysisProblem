@@ -75,4 +75,10 @@ public class IPLLeagueAnalysis {
         Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(BattingAnalysisCSV::getStrikeRate).thenComparing(BattingAnalysisCSV::getAverage);
         return sort.returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
     }
+
+    public String getMaximumRunWithBestAverageBattingData(String filePath) throws IOException {
+        loadBattingAnalysis(filePath);
+        Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(BattingAnalysisCSV::getAverage).thenComparing(BattingAnalysisCSV::getRuns);
+        return sort.returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
+    }
 }
