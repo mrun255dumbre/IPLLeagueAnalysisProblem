@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class IPLLeagueAnalysis {
     List<BattingAnalysisCSV> battingAnalysisCSVList;
@@ -61,6 +62,12 @@ public class IPLLeagueAnalysis {
         maxSixesAndFours.add(returnJsonFile(battingAnalysisCSVList, battingAnalysisComparator));
         maxSixesAndFours.add(returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator));
         return maxSixesAndFours;
+    }
+
+    public String getHighestStrikeRateWithMax6sand4s(String filePath) throws IOException {
+        loadBattingAnalysis(filePath);
+        Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(BattingAnalysisCSV::getBoundaryCount).thenComparing(BattingAnalysisCSV::getStrikeRate);
+        return returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
     }
 
     public <E> String returnJsonFile(List<E> iplList,Comparator<E> comparator ){

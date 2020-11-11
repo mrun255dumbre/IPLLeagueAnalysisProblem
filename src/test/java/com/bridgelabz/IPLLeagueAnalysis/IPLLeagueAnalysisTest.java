@@ -65,4 +65,11 @@ public class IPLLeagueAnalysisTest {
         Assert.assertEquals("Andre Russell",battingAnalysis[battingAnalysis.length-1].player);
         Assert.assertEquals("Shikhar Dhawan",battingAnalysisCSV[battingAnalysisCSV.length-1].player);
     }
+
+    @Test
+    public void givenBattingAnalysisData_WhenStrikeRateMax6sAnd4s_ShouldReturnResult () throws IOException{
+        sortedIPLBattingData = iplLeagueAnalysis.getHighestStrikeRateWithMax6sand4s(BATTING_CSV_FILE_PATH);
+        BattingAnalysisCSV[] battingAnalysisCSV = new Gson().fromJson(sortedIPLBattingData, BattingAnalysisCSV[].class);
+        Assert.assertEquals("Andre Russell",battingAnalysisCSV[100].player);
+    }
 }

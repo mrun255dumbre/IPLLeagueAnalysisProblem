@@ -46,6 +46,22 @@ public class BattingAnalysisCSV {
     @CsvBindByName(column = "6s", required = true)
     public int sixes;
 
+    public double getStrikeRate() {
+        return strikeRate;
+    }
+
+    public int getFours() {
+        return fours;
+    }
+
+    public int getSixes() {
+        return sixes;
+    }
+
+    public int getBoundaryCount(){
+        return fours + sixes;
+    }
+
     @Override
     public String toString() {
         return "BattingAnalysisCSV{" +
