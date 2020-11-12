@@ -1,17 +1,12 @@
 package com.bridgelabz.IPLLeagueAnalysis;
 
-import com.google.gson.Gson;
-import org.apache.commons.lang3.builder.CompareToBuilder;
-
 import java.io.IOException;
 import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class IPLLeagueAnalysis {
     List<BattingAnalysisCSV> battingAnalysisCSVList;
@@ -41,6 +36,7 @@ public class IPLLeagueAnalysis {
         }
         return battingAnalysisCSVList.size();
     }
+
 
     public String getAverageWiseSortedIPLBattingData(String filePath) throws IOException {
         loadBattingAnalysis(filePath);
@@ -103,6 +99,12 @@ public class IPLLeagueAnalysis {
     public String getBestStrikingRateWith5wAnd4wBowlingData(String filePath) throws IOException {
         loadBowlingAnalysis(filePath);
         Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(BowlingAnalysisCSV::getWicketInInnings).thenComparing(BowlingAnalysisCSV::getStrikeRate);
+        return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
+    }
+
+    public String getGreatAverageWithBestStrikingRateBowlingData(String filePath) throws IOException {
+        loadBowlingAnalysis(filePath);
+        Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(BowlingAnalysisCSV::getStrikeRate).thenComparing(BowlingAnalysisCSV::getAverage);
         return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
     }
 }

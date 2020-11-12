@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-11-11T08:34:45" hostname="DESKTOP-9I4U5L1" time="0.553">
+<testsuite name="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" tests="13" skipped="0" failures="0" errors="0" timestamp="2020-11-12T07:10:22" hostname="DESKTOP-9I4U5L1" time="3.441">
   <properties/>
-  <testcase name="givenBowlingAnalysisData_WhenBestStrikeRateWith5wAnd4w_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.553"/>
+  <testcase name="givenBattingAnalysisCsvFile_ShouldReturnCorrectRecords" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.667"/>
+  <testcase name="givenBattingAnalysisData_WhenMaximumRunWithBestAverage_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.434"/>
+  <testcase name="givenBowlingAnalysisData_WhenBestEconomyRate_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.329"/>
+  <testcase name="givenBattingAnalysisData_WhenGreatAverageWithBestStrikeRate_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.191"/>
+  <testcase name="givenBattingAnalysisData_WhenMax6sAnd4s_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.286"/>
+  <testcase name="givenBowlingAnalysisData_WhenGreatBowlingaverageWithBestStrikeRate_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.196"/>
+  <testcase name="givenBattingAnalysisData_WhenStrikeRateMax6sAnd4s_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.161"/>
+  <testcase name="givenBowlingAnalysisData_WhenBestStrikeRateWith5wAnd4w_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.273"/>
+  <testcase name="givenBowlingAnalysisCsvFile_ShouldReturnCorrectRecords" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.211"/>
+  <testcase name="givenBowlingAnalysisData_WhenTopBowlingAverage_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.132"/>
+  <testcase name="givenBattingAnalysisData_ShouldSortedOnAverage" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.2"/>
+  <testcase name="givenBattingAnalysisData_ShouldSortedOnStrikeRate" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.231"/>
+  <testcase name="givenBowlingAnalysisData_WhenTopStrikingRate_ShouldReturnResult" classname="com.bridgelabz.IPLLeagueAnalysis.IPLLeagueAnalysisTest" time="0.125"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
