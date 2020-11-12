@@ -14,30 +14,6 @@ public class IPLLeagueAnalysis {
     IPLDataSort iplDataSort = new IPLDataSort();
     LoadIPLData loadIPLData = new LoadIPLData();
 
-    public int loadBattingAnalysis(String csvFilePath) throws IOException {
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-            ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
-            battingAnalysisCSVList = csvBuilder.getCsvFileList(reader,BattingAnalysisCSV.class);
-            return battingAnalysisCSVList.size();
-        } catch (CSVBuilderException csvBuilderException) {
-            csvBuilderException.getMessage();
-        }
-        return battingAnalysisCSVList.size();
-    }
-
-    public int loadBowlingAnalysis(String csvFilePath) throws IOException {
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));
-            ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
-            bowlingAnalysisCSVList = csvBuilder.getCsvFileList(reader,BowlingAnalysisCSV.class);
-            return bowlingAnalysisCSVList.size();
-        } catch (CSVBuilderException csvBuilderException){
-            csvBuilderException.getMessage();
-        }
-        return battingAnalysisCSVList.size();
-    }
-
     public String getAverageWiseSortedIPLBattingData(String filePath) throws IOException {
         Comparator<BattingAnalysisCSV> battingAnalysisComparatorComparator = Comparator.comparing(battingAnalysis -> battingAnalysis.average);
         return this.iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BattingAnalysisCSV.class,battingAnalysisCSVList),battingAnalysisComparatorComparator);
