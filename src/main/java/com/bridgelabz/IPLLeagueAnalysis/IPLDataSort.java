@@ -5,7 +5,7 @@ import com.google.gson.Gson;
 import java.util.Comparator;
 import java.util.List;
 
-public class Sort {
+public class IPLDataSort {
 
     public <E> String returnJsonFile(List<E> iplList,Comparator<E> comparator ){
         this.sort(iplList,comparator);

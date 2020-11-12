@@ -11,7 +11,8 @@ import java.util.List;
 public class IPLLeagueAnalysis {
     List<BattingAnalysisCSV> battingAnalysisCSVList;
     List<BowlingAnalysisCSV> bowlingAnalysisCSVList;
-    Sort sort = new Sort();
+    IPLDataSort iplDataSort = new IPLDataSort();
+    LoadIPLData loadIPLData = new LoadIPLData();
 
     public int loadBattingAnalysis(String csvFilePath) throws IOException {
         try {
@@ -37,74 +38,62 @@ public class IPLLeagueAnalysis {
         return battingAnalysisCSVList.size();
     }
 
-
     public String getAverageWiseSortedIPLBattingData(String filePath) throws IOException {
-        loadBattingAnalysis(filePath);
         Comparator<BattingAnalysisCSV> battingAnalysisComparatorComparator = Comparator.comparing(battingAnalysis -> battingAnalysis.average);
-        return this.sort.returnJsonFile(battingAnalysisCSVList,battingAnalysisComparatorComparator);
+        return this.iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BattingAnalysisCSV.class,battingAnalysisCSVList),battingAnalysisComparatorComparator);
     }
 
     public String getHighestStrikeRate(String filePath) throws IOException {
-        loadBattingAnalysis(filePath);
         Comparator<BattingAnalysisCSV> battingAnalysisComparator = Comparator.comparing(battingAnalysisCSV -> battingAnalysisCSV.strikeRate);
-        return this.sort.returnJsonFile(battingAnalysisCSVList,battingAnalysisComparator);
+        return this.iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BattingAnalysisCSV.class,battingAnalysisCSVList),battingAnalysisComparator);
     }
 
     public List<String> getMaximumSixesAndFoursBattingData(String filePath) throws IOException {
         List<String> maxSixesAndFours = new ArrayList<>();
-        loadBattingAnalysis(filePath);
         Comparator<BattingAnalysisCSV> battingAnalysisComparator = Comparator.comparing(battingAnalysis -> battingAnalysis.sixes);
         Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(battingAnalysis -> battingAnalysis.fours);
-        maxSixesAndFours.add(sort.returnJsonFile(battingAnalysisCSVList, battingAnalysisComparator));
-        maxSixesAndFours.add(sort.returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator));
+        maxSixesAndFours.add(iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BattingAnalysisCSV.class,battingAnalysisCSVList), battingAnalysisComparator));
+        maxSixesAndFours.add(iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BattingAnalysisCSV.class,battingAnalysisCSVList), battingAnalysisCSVComparator));
         return maxSixesAndFours;
     }
 
     public String getHighestStrikeRateWithMax6sand4s(String filePath) throws IOException {
-        loadBattingAnalysis(filePath);
         Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(BattingAnalysisCSV::getBoundaryCount).thenComparing(BattingAnalysisCSV::getStrikeRate);
-        return sort.returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
+        return iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BattingAnalysisCSV.class,battingAnalysisCSVList), battingAnalysisCSVComparator);
     }
 
     public String getGreatAverageWithBestStrikeRateBattingData(String filePath) throws IOException {
-        loadBattingAnalysis(filePath);
         Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(BattingAnalysisCSV::getStrikeRate).thenComparing(BattingAnalysisCSV::getAverage);
-        return sort.returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
+        return iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BattingAnalysisCSV.class,battingAnalysisCSVList), battingAnalysisCSVComparator);
     }
 
     public String getMaximumRunWithBestAverageBattingData(String filePath) throws IOException {
-        loadBattingAnalysis(filePath);
         Comparator<BattingAnalysisCSV> battingAnalysisCSVComparator = Comparator.comparing(BattingAnalysisCSV::getAverage).thenComparing(BattingAnalysisCSV::getRuns);
-        return sort.returnJsonFile(battingAnalysisCSVList, battingAnalysisCSVComparator);
+        return iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BattingAnalysisCSV.class,battingAnalysisCSVList), battingAnalysisCSVComparator);
     }
 
     public String getTopBowlingAverageBowlingData(String filePath) throws IOException {
-        loadBowlingAnalysis(filePath);
         Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(bowlingAnalysisCSV -> bowlingAnalysisCSV.average );
-        return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
+        return iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BowlingAnalysisCSV.class,bowlingAnalysisCSVList), bowlingAnalysisCSVComparator);
     }
 
     public String getTopStrikingRateBowlingData(String filePath) throws IOException {
-        loadBowlingAnalysis(filePath);
         Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(bowlingAnalysisCSV -> bowlingAnalysisCSV.strikeRate);
-        return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
+        return iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BowlingAnalysisCSV.class,bowlingAnalysisCSVList), bowlingAnalysisCSVComparator);
     }
 
     public String getBestEconomyRateBowlingData(String filePath) throws IOException {
-        loadBowlingAnalysis(filePath);
         Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(bowlingAnalysisCSV -> bowlingAnalysisCSV.economyRate);
-        return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
+        return iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BowlingAnalysisCSV.class,bowlingAnalysisCSVList), bowlingAnalysisCSVComparator);
     }
 
     public String getBestStrikingRateWith5wAnd4wBowlingData(String filePath) throws IOException {
-        loadBowlingAnalysis(filePath);
         Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(BowlingAnalysisCSV::getWicketInInnings).thenComparing(BowlingAnalysisCSV::getStrikeRate);
-        return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
+        return iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BowlingAnalysisCSV.class,bowlingAnalysisCSVList), bowlingAnalysisCSVComparator);
     }
 
     public String getGreatAverageWithBestStrikingRateBowlingData(String filePath) throws IOException {
-        loadBowlingAnalysis(filePath);
         Comparator<BowlingAnalysisCSV> bowlingAnalysisCSVComparator = Comparator.comparing(BowlingAnalysisCSV::getStrikeRate).thenComparing(BowlingAnalysisCSV::getAverage);
-        return sort.returnJsonFile(bowlingAnalysisCSVList, bowlingAnalysisCSVComparator);
+        return iplDataSort.returnJsonFile(loadIPLData.loadIPLData(filePath,BowlingAnalysisCSV.class,bowlingAnalysisCSVList), bowlingAnalysisCSVComparator);
     }
 }

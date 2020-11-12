@@ -21,18 +21,6 @@ public class IPLLeagueAnalysisTest {
     }
 
     @Test
-    public void givenBattingAnalysisCsvFile_ShouldReturnCorrectRecords() throws IOException {
-        int numOfRecords = iplLeagueAnalysis.loadBattingAnalysis(BATTING_CSV_FILE_PATH);
-        Assert.assertEquals(101,numOfRecords);
-    }
-
-    @Test
-    public void givenBowlingAnalysisCsvFile_ShouldReturnCorrectRecords() throws IOException {
-        int numOfRecords = iplLeagueAnalysis.loadBowlingAnalysis(BOWLING_CSV_FILE_PATH);
-        Assert.assertEquals(99,numOfRecords);
-    }
-
-    @Test
     public void givenBattingAnalysisData_ShouldSortedOnAverage() throws IOException {
         sortedIPLBattingData = iplLeagueAnalysis.getAverageWiseSortedIPLBattingData(BATTING_CSV_FILE_PATH);
         BattingAnalysisCSV[] battingAnalysisCSV = new Gson().fromJson(sortedIPLBattingData, BattingAnalysisCSV[].class);
